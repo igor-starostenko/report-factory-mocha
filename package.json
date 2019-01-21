@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Mocha reporter for ReportFactory https://github.com/igor-starostenko/report_factory",
   "scripts": {
+    "docs": "jsdoc lib",
     "test": "mocha"
   },
   "repository": {
