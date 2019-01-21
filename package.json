@@ -1,5 +1,5 @@
 {
-  "name": "report_factory",
+  "name": "report-factory-mocha",
   "version": "1.0.0",
   "description": "Mocha reporter for ReportFactory https://github.com/igor-starostenko/report_factory",
   "main": "./index.js",
