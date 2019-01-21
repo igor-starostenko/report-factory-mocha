@@ -1,0 +1,41 @@
+{
+  "name": "report_factory",
+  "version": "1.0.0",
+  "description": "Mocha reporter for ReportFactory https://github.com/igor-starostenko/report_factory",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igor-starostenko/report_factory-mocha.git"
+  },
+  "keywords": [
+    "test",
+    "qa",
+    "reports",
+    "testing",
+    "mocha",
+    "reporter",
+    "npm",
+    "js",
+    "javascript",
+    "qatools",
+    "test-automation",
+    "report"
+  ],
+  "author": "Igor Starostenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igor-starostenko/report_factory-mocha/issues"
+  },
+  "homepage": "https://github.com/igor-starostenko/report_factory-mocha#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nock": "^10.0.6"
+  },
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  }
+}
