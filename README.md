@@ -42,7 +42,7 @@ You can use [mocha-multi-reporters](https://www.npmjs.com/package/mocha-multi-re
 
 After checking out the repo, run `npm install` to install dependencies.
 
-Run tests with `npm run test`;
+Run tests with `npm run test`.
 
 ## Contributing
 

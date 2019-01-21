@@ -14,6 +14,32 @@ describe('ReportFactory', function() {
   });
 
   describe('API', () => {
+    const passedReport = {
+      suites: 2,
+      total: 1,
+      passes: 1,
+      pending: 0,
+      failures: 0,
+      start: '2019-01-20T04:28:34.861Z',
+      end: '2019-01-20T04:28:34.867Z',
+      duration: 6,
+      tests: [{
+        title: 'submits a passed test report to ReportFactory',
+        fullTitle: 'ReportFactory API submits a passed test report to ReportFactory',
+        body: '() => {\n  return sendReport(report);\n}',
+        duration: 18,
+        status: 'passed',
+        speed: 'fast',
+        file: '/Users/igorstar/Workspace/ReportFactory/report-factory-mocha/test/api_test.js',
+        timedOut: false,
+        pending: false,
+        sync: true,
+        async: 0,
+        currentRetry: 0,
+        err: null,
+      }],
+    };
+
     beforeEach(() => {
       nock(baseUrl)
         .post(path)
@@ -21,30 +47,7 @@ describe('ReportFactory', function() {
     });
 
     it('submits a passed test report to ReportFactory', () => {
-      const report = {
-        stats: {
-          suites: 2,
-          tests: 0,
-          passes: 1,
-          pending: 0,
-          failures: 0,
-          start: '2019-01-20T04:28:34.861Z',
-          end: '2019-01-20T04:28:34.867Z',
-          duration: 6
-        },
-        tests: [],
-        pending: [],
-        failures: [],
-        passes: [{
-          title: '"before each" hook for "Get a user by username"',
-          fullTitle: 'Api Get User tests "before each" hook for "Get a user by username"',
-          duration: 2,
-          currentRetry: 0,
-          err: null,
-        }],
-      };
-
-      return sendReport(report)
+      return sendReport(passedReport)
         .then(response => {
           expect(typeof response).to.equal('object');
           expect(response.status).to.equal('OK')
@@ -52,30 +55,11 @@ describe('ReportFactory', function() {
     });
 
     it('submits a failed test report to ReportFactory', () => {
-      const report = {
-        stats: {
-          suites: 2,
-          tests: 0,
-          passes: 0,
-          pending: 0,
-          failures: 1,
-          start: '2019-01-20T04:28:34.861Z',
-          end: '2019-01-20T04:28:34.867Z',
-          duration: 6
-        },
-        tests: [],
-        pending: [],
-        failures: [{
-          title: '"before each" hook for "Get a user by username"',
-          fullTitle: 'Api Get User tests "before each" hook for "Get a user by username"',
-          duration: 2,
-          currentRetry: 0,
-          err: 'ReferenceError: response is not defined\nat Context.beforeEach (test/api_test.js:10:21) } ]',
-        }],
-        passes: [],
-      };
+      const failedReport = { ...passedReport };
+      const error = 'ReferenceError: response is not defined\nat Context.beforeEach (test/api_test.js:10:21) } ]';
+      failedReport.tests[0].err = error;
 
-      return sendReport(report)
+      return sendReport(failedReport)
         .then(response => {
           expect(typeof response).to.equal('object');
           expect(response.status).to.equal('OK')
