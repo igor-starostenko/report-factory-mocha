@@ -2,6 +2,7 @@
   "name": "report_factory",
   "version": "1.0.0",
   "description": "Mocha reporter for ReportFactory https://github.com/igor-starostenko/report_factory",
+  "main": "./index.js",
   "scripts": {
     "docs": "jsdoc lib",
     "test": "mocha"
@@ -12,7 +13,7 @@
   },
   "directories": {
     "lib": "./lib",
-    "test": "./test" 
+    "test": "./test"
   },
   "keywords": [
     "test",
@@ -30,6 +31,9 @@
   ],
   "author": "Igor Starostenko",
   "license": "MIT",
+  "engines": {
+    "node": ">= 6.0.0"
+  },
   "bugs": {
     "url": "https://github.com/igor-starostenko/report_factory-mocha/issues"
   },
