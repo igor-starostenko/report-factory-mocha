@@ -60,7 +60,7 @@ describe('ReportFactory', function() {
     });
 
     it('submits a failed test report to ReportFactory', () => {
-      const failedReport = { ...passedReport, passes: 0, failures: 1 };
+      const failedReport = Object.assign({}, passedReport, { passes: 0, failures: 1 });
       const error = 'ReferenceError: response is not defined\nat Context.beforeEach (test/api_test.js:10:21) } ]';
       failedReport.tests[0].status = 'failed';
       failedReport.tests[0].err = error;
