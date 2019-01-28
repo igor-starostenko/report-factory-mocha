@@ -1,5 +1,7 @@
 # ReportFactory Mocha reporter
 
+[![Build Status](https://travis-ci.org/igor-starostenko/report-factory-mocha.svg?branch=master)](https://travis-ci.org/igor-starostenko/report-factory-mocha)
+
 *ReportFactory* helps you save each of your test runs so that they are always available for reports and analytics.
 It consists of three parts:
 1. A [rails server](https://github.com/igor-starostenko/report_factory) that provides an interface via JSON API and saves your test runs in a DB;
@@ -42,7 +44,7 @@ You can use [mocha-multi-reporters](https://www.npmjs.com/package/mocha-multi-re
 
 After checking out the repo, run `npm install` to install dependencies.
 
-Run tests with `npm run test`;
+Run tests with `npm run test`.
 
 ## Contributing
 
