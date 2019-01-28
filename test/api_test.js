@@ -4,12 +4,17 @@ const { sendReport } = require('../lib/api');
 const { configure } = require('../lib/config');
 
 describe('ReportFactory', function() {
+  const testUrl = 'http://0.0.0.0:9000';
   const baseUrl = 'http://0.0.0.0:3000';
   const projectName = 'x-webapp';
   const path = `/api/v1/projects/${projectName}/reports/mocha`;
   const authToken = '82f551b8-dea9-4385-9c4f-d290688391cc';
 
   before(() => {
+    configure({ baseUrl: testUrl, projectName, authToken });
+  });
+
+  after(() => {
     configure({ baseUrl, projectName, authToken });
   });
 
@@ -41,9 +46,9 @@ describe('ReportFactory', function() {
     };
 
     beforeEach(() => {
-      nock(baseUrl)
+      nock(testUrl)
         .post(path)
-        .reply(200, { status: 'OK' });
+        .reply(201, { status: 'OK' });
     });
 
     it('submits a passed test report to ReportFactory', () => {
@@ -55,7 +60,7 @@ describe('ReportFactory', function() {
     });
 
     it('submits a failed test report to ReportFactory', () => {
-      const failedReport = { ...passedReport };
+      const failedReport = { ...passedReport, passes: 0, failures: 1 };
       const error = 'ReferenceError: response is not defined\nat Context.beforeEach (test/api_test.js:10:21) } ]';
       failedReport.tests[0].status = 'failed';
       failedReport.tests[0].err = error;
@@ -63,7 +68,7 @@ describe('ReportFactory', function() {
       return sendReport(failedReport)
         .then(response => {
           expect(typeof response).to.equal('object');
-          expect(response.status).to.equal('NO')
+          expect(response.status).to.equal('OK')
         });
     });
   });
