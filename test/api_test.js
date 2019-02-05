@@ -28,21 +28,25 @@ describe('ReportFactory', function() {
       started: '2019-01-20T04:28:34.861Z',
       ended: '2019-01-20T04:28:34.867Z',
       duration: 6,
-      tests: [{
-        title: 'submits a passed test report to ReportFactory',
-        fullTitle: 'ReportFactory API submits a passed test report to ReportFactory',
-        body: '() => {\n  return sendReport(report);\n}',
-        duration: 18,
-        status: 'passed',
-        speed: 'fast',
-        file: '/Users/username/ReportFactory/report-factory-mocha/test/api_test.js',
-        timedOut: false,
-        pending: false,
-        sync: true,
-        async: 0,
-        currentRetry: 0,
-        err: null,
-      }],
+      tests: [
+        {
+          title: 'submits a passed test report to ReportFactory',
+          fullTitle:
+            'ReportFactory API submits a passed test report to ReportFactory',
+          body: '() => {\n  return sendReport(report);\n}',
+          duration: 18,
+          status: 'passed',
+          speed: 'fast',
+          file:
+            '/Users/username/ReportFactory/report-factory-mocha/test/api_test.js',
+          timedOut: false,
+          pending: false,
+          sync: true,
+          async: 0,
+          currentRetry: 0,
+          err: null,
+        },
+      ],
     };
 
     beforeEach(() => {
@@ -52,24 +56,26 @@ describe('ReportFactory', function() {
     });
 
     it('submits a passed test report to ReportFactory', () => {
-      return sendReport(passedReport)
-        .then(response => {
-          expect(typeof response).to.equal('object');
-          expect(response.status).to.equal('OK')
-        });
+      return sendReport(passedReport).then(response => {
+        expect(typeof response).to.equal('object');
+        expect(response.status).to.equal('OK');
+      });
     });
 
     it('submits a failed test report to ReportFactory', () => {
-      const failedReport = Object.assign({}, passedReport, { passes: 0, failures: 1 });
-      const error = 'ReferenceError: response is not defined\nat Context.beforeEach (test/api_test.js:10:21) } ]';
+      const failedReport = Object.assign({}, passedReport, {
+        passes: 0,
+        failures: 1,
+      });
+      const error =
+        'ReferenceError: response is not defined\nat Context.beforeEach (test/api_test.js:10:21) } ]';
       failedReport.tests[0].status = 'failed';
       failedReport.tests[0].err = error;
 
-      return sendReport(failedReport)
-        .then(response => {
-          expect(typeof response).to.equal('object');
-          expect(response.status).to.equal('OK')
-        });
+      return sendReport(failedReport).then(response => {
+        expect(typeof response).to.equal('object');
+        expect(response.status).to.equal('OK');
+      });
     });
   });
 });
