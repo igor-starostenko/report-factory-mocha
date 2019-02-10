@@ -8,6 +8,7 @@
     "format": "eslint --format codeframe --fix .",
     "lint": "eslint --format codeframe .",
     "test": "mocha",
+    "test:coverage": "istanbul cover _mocha",
     "test:report": "mocha --reporter './lib/reporter'"
   },
   "husky": {
@@ -69,6 +70,7 @@
     "prettier": "1.16.4"
   },
   "dependencies": {
+    "istanbul": "^0.4.5",
     "node-fetch": "^2.3.0"
   }
 }
