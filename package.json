@@ -20,8 +20,8 @@
     "*.{js}": [
       "eslint"
     ],
-    "*.{js,json,md}": [
-      "prettier --list-different"
+    "*.{js,json}": [
+      "prettier --list-different --format"
     ]
   },
   "repository": {
