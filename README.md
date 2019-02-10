@@ -1,6 +1,8 @@
 # ReportFactory Mocha reporter
 
 [![Build Status](https://travis-ci.org/igor-starostenko/report-factory-mocha.svg?branch=master)](https://travis-ci.org/igor-starostenko/report-factory-mocha)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7298717c344ef9544036/maintainability)](https://codeclimate.com/github/igor-starostenko/report-factory-mocha/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7298717c344ef9544036/test_coverage)](https://codeclimate.com/github/igor-starostenko/report-factory-mocha/test_coverage)
 
 *ReportFactory* helps you save each of your test runs so that they are always available for reports and analytics.
 It consists of three parts:
